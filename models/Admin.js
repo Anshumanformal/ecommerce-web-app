@@ -9,7 +9,7 @@ const DocSchema = new Schema(
         username: { type: String, default: "" },
         email: { type: String, default: "", index: true },
         password: { type: String, default: "", index: true },
-        image : {type : String , default: ""},
+        imageUrl : {type : String , default: ""},
         // isNewUser: { type: Boolean, default: true },
         // isEmailVerified: { type: Boolean, default: false },
         accessToken: { type: String, default: ""},

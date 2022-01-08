@@ -23,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(responses());
 // static files
 app.use(express.static(path.join(__dirname, "views")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/v1", v1Routes);
 

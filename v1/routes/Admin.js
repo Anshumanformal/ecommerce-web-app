@@ -3,7 +3,8 @@ const multer = require("multer");
 const path = require("path");
 
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, "public", "uploads", "admin") /*+ "/public/uploads/admin"*/,
+    destination: path.resolve('public', 'uploads', 'admin'),
+    // destination: path.join(__dirname, "public", "uploads", "admin") /*+ "/public/uploads/admin"*/,
     filename: function (req, file, cb) {
         const extension = "".concat(file.originalname).split(".").pop();
         const filename = Date.now().toString(36);
@@ -17,7 +18,8 @@ const Controller = require("../controllers");
 
 router.post("/register", Controller.AdminController.register);
 router.post("/login", Controller.AdminController.login);
-router.post("/uploadImage", Auth.verify("admin"), Controller.AdminController.uploadImage);
+router.post("/uploadImage", Auth.verify("admin"),upload.single("image"), Controller.AdminController.uploadImage);
+
 router.get("/getAdmin", Auth.verify("admin"), Controller.AdminController.getAdminData);
 
 router.get("/user", Auth.verify('admin'), Controller.AdminController.getAllUser);

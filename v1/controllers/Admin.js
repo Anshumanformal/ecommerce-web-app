@@ -64,7 +64,17 @@ module.exports.getAdminData = async (req, res, next) => {
 
 module.exports.uploadImage = async (req, res, next) => {
     try {
-        res.success("INSIDE_UPLOAD_IMAGE");
+        
+        if(!req.file) throw new Error("ERROR_WHILE_UPLOADING");
+        let admin = await Model.Admin.findOne({_id : req.user._id});
+
+        const newPath = req.file.path.split("public").pop();
+        
+        const fullImageName = process.env.BASE_URL + newPath;
+        admin.imageUrl = fullImageName;
+        await admin.save();
+
+        res.success("IMAGE_UPLOADED_SUCCUSSFULLY", admin);
     } catch (error) {
         next(error);
     }

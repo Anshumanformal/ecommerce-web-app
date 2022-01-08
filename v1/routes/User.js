@@ -2,14 +2,14 @@ const router = require("express").Router();
 const multer = require("multer");
 const path = require("path");
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, "public", "uploads", "user")/* + "/public/uploads/user"*/,
+    destination: path.resolve('public', 'uploads', 'user'),
+    // destination: path.join(__dirname, "public", "uploads", "user")/* + "/public/uploads/user"*/,
     filename: function (req, file, cb) {
         const extension = "".concat(file.originalname).split(".").pop();
         const filename = Date.now().toString(36);
         cb(null, `${filename}.${extension}`);
     },
 });
-
 const upload = multer({ storage });
 
 const Auth = require("../../common/authenticate");
@@ -24,6 +24,7 @@ router.post("/login", Controller.UserController.login);
 router.get("/user", Auth.verify("user"), Controller.UserController.getOneUser);
 router.put("/user/:id", Auth.verify("user"), Controller.UserController.updateOneUser);
 router.post("/user/updatePassword", Auth.verify("user"), Controller.UserController.updatePassword);
+router.post("/uploadImage", Auth.verify("user"), upload.single("image"), Controller.UserController.uploadImage);
 
 
 //E-Commerce Web App APIs

@@ -4,7 +4,9 @@ const Auth = require("../../common/authenticate");
 const Services = require("../../services/index");
 const functions = require("../../common/functions");
 const bcrypt = require('bcryptjs');
+const path = require("path");
 const stripe = require('stripe')(process.env.STRIPE_KEY);
+
 
 
 module.exports.register = async (req, res, next) => {
@@ -126,6 +128,25 @@ module.exports.updatePassword = async (req, res, next) => {
         
         await user.setPassword(req.body.password);
         return res.success("PASSWORD_UPDATED_SUCCESSFULLY");
+
+    } catch (error) {
+        next(error);
+    }
+}
+
+module.exports.uploadImage = async(req, res, next) => {
+    try {
+       
+        if(!req.file) throw new Error("ERROR_WHILE_UPLOADING");
+        let user = await Model.User.findOne({_id : req.user._id});
+
+        const newPath = req.file.path.split("public").pop();
+        
+        const fullImageName = process.env.BASE_URL + newPath;
+        user.imageUrl = fullImageName;
+        await user.save();
+
+        res.success("IMAGE_UPLOADED_SUCCUSSFULLY", user);
 
     } catch (error) {
         next(error);
