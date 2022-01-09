@@ -328,19 +328,6 @@ module.exports.clearCart = async (req, res, next) => {
     }
 }
 
-// module.exports.testFetch = async (req, res, next) => {
-//     try {
-//         const axios = require('axios');
-//             let result = await axios('https://www.google.com');
-//             console.log(result);
-//         // res.success("DATA_FROM_GOOGLE", result);
-
-//     } catch (error) {
-//         console.error(error);
-//         // next(error);
-//     }
-// }
-
 module.exports.cartCheckout = async (req, res, next) => {
     try {
         
@@ -538,15 +525,15 @@ module.exports.payment = async (req, res, next) => {
     }
 }
 
-module.exports.stripeTokenGenerator = async (req, res, next) => {
-    try {
+// module.exports.stripeTokenGenerator = async (req, res, next) => {
+//     try {
         
-        const stripeHandler = StripeCheckout.config()
+//         const stripeHandler = StripeCheckout.config()
 
 
-    } catch (error) {
-        next(error);
-    }
-}
+//     } catch (error) {
+//         next(error);
+//     }
+// }
 
 

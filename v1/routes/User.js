@@ -51,7 +51,6 @@ router.post("/clearCart", Auth.verify("user"), Controller.UserController.clearCa
 router.post("/cartCheckout", Auth.verify("user"), Controller.UserController.cartCheckout);
 
 router.post("/payment", Auth.verify("user"), Controller.UserController.payment);
-router.post("/stripeTokenGenerator", Auth.verify("user"), Controller.UserController.stripeTokenGenerator);
-// router.post("/testFetch", Auth.verify("user"), Controller.UserController.testFetch);
+// router.post("/stripeTokenGenerator", Auth.verify("user"), Controller.UserController.stripeTokenGenerator);
 
 module.exports = router;
