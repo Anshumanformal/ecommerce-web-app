@@ -404,7 +404,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"productId\" : \"61c0736533cdc75011cbb90e\",\r\n    \"quantity\" : \"8\"\r\n}",
+									"raw": "{\r\n    \"productId\" : \"61c09cc1f493f5d72e55d235\",\r\n    \"quantity\" : \"5\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -604,7 +604,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"items\" : [\r\n        \"61dc49b658539d96ea7dbb73\",\r\n        \"61dc49a758539d96ea7dbb6f\",\r\n        \"61dc499b58539d96ea7dbb6b\"\r\n    ]\r\n}",
+									"raw": "{\r\n    \"items\" : [\r\n        \"61d4446597605e7e43467cc3\",\r\n        \"61d4445697605e7e43467cbf\",\r\n        \"61d4444597605e7e43467cbb\"\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
