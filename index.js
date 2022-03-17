@@ -20,12 +20,16 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.set('view engine', 'ejs');
 app.use(responses());
 // static files
 app.use(express.static(path.join(__dirname, "views")));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/v1", v1Routes);
+app.use("/", (req,res, next) => {
+    res.render('homepage');
+})
 
 // 404, Not Found
 app.use((req, res, next) => res.error(404, "NOT_FOUND"));
